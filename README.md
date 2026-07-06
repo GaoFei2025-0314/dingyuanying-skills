@@ -1,6 +1,6 @@
 # 丁元英 · 现代版 Skills
 
-把《天道》（原著《遥远的救世主》，豆豆著）里 **丁元英** 的思维方式，蒸馏成一套可以用在现代社会的 [Claude Code Skill](https://code.claude.com/docs)。
+把《天道》（原著《遥远的救世主》，豆豆著）里 **丁元英** 的思维方式，蒸馏成一套可以用在现代社会的 Agent Skill——同时支持 [Claude Code](https://code.claude.com/docs) 和 [OpenAI Codex](https://developers.openai.com/codex/skills)（两者共用同一开放的 Agent Skills 标准）。
 
 不是金句语录合集，而是复用他**看问题的方法**：透过现象剥到文化属性，按客观规律办事，为自己的因果负责，不等救世主。
 
@@ -21,19 +21,37 @@
 ## 目录结构
 
 ```
-skills/dingyuanying/
+skills/dingyuanying/                  # Skill 本体（Claude 与 Codex 通用格式）
 ├── SKILL.md                          # 主入口：触发条件 + 七步分析流程
+├── agents/openai.yaml                # Codex 可选元数据（Claude 会忽略）
 └── references/
     ├── core-concepts.md              # 核心概念详解（含原著语境）
     ├── apply-to-modern-life.md       # 职业/创业/投资/人际/内耗 五类场景
     └── pitfalls-and-limits.md        # 盲区、代价与使用红线（建议先读）
+.agents/skills/dingyuanying           # → 指向上面的符号链接，供 Codex 在本仓库内自动发现
 docs/
 └── decision-card.html                # 七步决策卡（浏览器直接打开即可对照使用）
+install.sh                            # 一键安装到用户级目录（Claude / Codex / 两者）
 ```
 
 ## 怎么用
 
-**在 Claude Code 里**，把 `skills/dingyuanying/` 放到你的 skills 目录（如 `~/.claude/skills/` 或项目的 `.claude/skills/`），Claude 会在合适的场景自动触发；你也可以直接说"用丁元英的思路帮我看看这件事"。
+**一键安装**（推荐，装到用户级目录后在任何项目都可用）：
+
+```bash
+git clone https://github.com/GaoFei2025-0314/dingyuanying-skills.git
+cd dingyuanying-skills
+./install.sh          # 同时安装 Claude Code 和 Codex
+./install.sh claude   # 只装 Claude Code → ~/.claude/skills/dingyuanying
+./install.sh codex    # 只装 Codex      → ~/.agents/skills/dingyuanying
+```
+
+**在 Claude Code 里**：安装后在合适的场景会自动触发；也可以直接说"用丁元英的思路帮我看看这件事"。
+
+**在 OpenAI Codex 里**（CLI / IDE 扩展 / Codex 应用均可）：
+- 安装后输入 `$dingyuanying`，或运行 `/skills` 从列表选择；任务匹配描述时 Codex 也会隐式触发。
+- 如果只是克隆了本仓库并在仓库目录里启动 Codex，无需安装——Codex 会通过 `.agents/skills/` 自动发现本 Skill。
+- 新装的 Skill 如未立即出现，重启一次 Codex 即可。
 
 **当成思维清单**：不装 Claude Code 也行，`SKILL.md` 的七步流程和 `apply-to-modern-life.md` 的场景走法，本身就是一份可以对照使用的决策清单。
 

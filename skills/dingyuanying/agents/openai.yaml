@@ -1,0 +1,9 @@
+# Codex 可选元数据（Claude Code 会忽略此文件）
+# https://developers.openai.com/codex/skills
+interface:
+  display_name: "丁元英思维"
+  short_description: "用《天道》丁元英的七步框架冷静拆解重大决策"
+  default_prompt: "用丁元英的思路帮我拆解这件事："
+
+policy:
+  allow_implicit_invocation: true
