@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>丁元英 · 七步决策卡</title>
+</head>
+<body>
+<style>
+  :root {
+    --paper: #f4f4f0;
+    --ink: #1d2126;
+    --ink-2: #5c6169;
+    --ink-3: #8a8f96;
+    --seal: #a83a2c;
+    --hairline: #d9dbd5;
+    --card: #fbfbf8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #16181b;
+      --ink: #dcdee0;
+      --ink-2: #9aa0a8;
+      --ink-3: #6c7178;
+      --seal: #d0584a;
+      --hairline: #2c2f34;
+      --card: #1c1f23;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #16181b;
+    --ink: #dcdee0;
+    --ink-2: #9aa0a8;
+    --ink-3: #6c7178;
+    --seal: #d0584a;
+    --hairline: #2c2f34;
+    --card: #1c1f23;
+  }
+  :root[data-theme="light"] {
+    --paper: #f4f4f0;
+    --ink: #1d2126;
+    --ink-2: #5c6169;
+    --ink-3: #8a8f96;
+    --seal: #a83a2c;
+    --hairline: #d9dbd5;
+    --card: #fbfbf8;
+  }
+
+  html { background: var(--paper); }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    font-size: 15px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  .serif {
+    font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem 5rem;
+  }
+
+  /* ---------- header ---------- */
+  header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-bottom: 2.25rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.35em;
+    color: var(--ink-2);
+    margin: 0 0 0.9rem;
+  }
+  h1 {
+    font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+    font-size: clamp(28px, 6vw, 38px);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.3;
+    margin: 0 0 0.75rem;
+    text-wrap: balance;
+  }
+  .subtitle {
+    color: var(--ink-2);
+    margin: 0;
+    max-width: 30em;
+  }
+  .seal {
+    flex: none;
+    width: 62px;
+    height: 62px;
+    margin-top: 0.4rem;
+    border: 2.5px solid var(--seal);
+    border-radius: 4px;
+    color: var(--seal);
+    font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    display: grid;
+    place-items: center;
+    transform: rotate(3deg);
+    line-height: 1.15;
+    text-align: center;
+    user-select: none;
+  }
+
+  /* ---------- intro line ---------- */
+  .howto {
+    margin: 2rem 0 0;
+    color: var(--ink-2);
+    font-size: 14px;
+  }
+  .howto strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- steps ---------- */
+  ol.steps {
+    list-style: none;
+    margin: 2.5rem 0 0;
+    padding: 0;
+  }
+  ol.steps > li {
+    display: grid;
+    grid-template-columns: 3.25rem 1fr;
+    gap: 0 1.25rem;
+    padding: 1.9rem 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  ol.steps > li:last-child { border-bottom: none; }
+
+  .num {
+    font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--seal);
+    line-height: 1.35;
+    text-align: center;
+  }
+  .num small {
+    display: block;
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    color: var(--ink-3);
+    margin-top: 0.2rem;
+  }
+
+  .step-name {
+    font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin: 0 0 0.35rem;
+    line-height: 1.4;
+  }
+  .step-point {
+    margin: 0 0 0.85rem;
+    color: var(--ink-2);
+    max-width: 34em;
+  }
+  .ask {
+    margin: 0;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--seal);
+    max-width: 34em;
+  }
+  .ask .label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--seal);
+    margin-bottom: 0.15rem;
+  }
+  .ask p { margin: 0; font-weight: 500; }
+
+  /* ---------- redlines ---------- */
+  .redlines {
+    margin-top: 3.25rem;
+    padding: 1.6rem 1.75rem 1.75rem;
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: 3px;
+  }
+  .redlines h2 {
+    font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin: 0 0 0.9rem;
+    color: var(--ink);
+  }
+  .redlines ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--ink-2);
+    font-size: 14px;
+  }
+  .redlines li {
+    padding-left: 1.1rem;
+    position: relative;
+    margin-bottom: 0.35rem;
+  }
+  .redlines li::before {
+    content: "·";
+    position: absolute;
+    left: 0.2rem;
+    color: var(--seal);
+    font-weight: 700;
+  }
+  .redlines li:last-child { margin-bottom: 0; }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--ink);
+  }
+  .summary {
+    font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 2;
+    margin: 0 0 1.25rem;
+    text-wrap: balance;
+  }
+  .summary em {
+    font-style: normal;
+    color: var(--seal);
+  }
+  .colophon {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+    margin: 0;
+  }
+
+  @media (max-width: 480px) {
+    ol.steps > li { grid-template-columns: 2.5rem 1fr; gap: 0 0.9rem; }
+    .num { font-size: 22px; }
+    .seal { width: 52px; height: 52px; font-size: 17px; }
+  }
+</style>
+
+<div class="page">
+  <header>
+    <div>
+      <p class="eyebrow">《天道》 · 丁元英思维</p>
+      <h1>七步决策卡</h1>
+      <p class="subtitle">面对重大选择时依次过七道关。不求每步长篇大论，但每步都要真的想过。</p>
+    </div>
+    <div class="seal" aria-hidden="true">自<br>度</div>
+  </header>
+
+  <p class="howto"><strong>用法：</strong>把情绪、面子、"别人会怎么看"先从桌面上拿走，只留事实。然后从第一步开始，逐条回答朱砂色的问句，答不上来的那一步，就是问题的根子。</p>
+
+  <ol class="steps">
+    <li>
+      <div class="num">一<small>剥层</small></div>
+      <div>
+        <h3 class="step-name">剥到文化属性</h3>
+        <p class="step-point">技术 → 制度 → 文化，连剥三层。表面纠结的是招法，往下是规则与利益格局，最底下是反复生产这个结果的思维方式。根子几乎总在第三层。</p>
+        <blockquote class="ask"><span class="label">问自己</span><p>是什么思维方式，在反复生产这个结果？</p></blockquote>
+      </div>
+    </li>
+    <li>
+      <div class="num">二<small>自检</small></div>
+      <div>
+        <h3 class="step-name">强弱势文化自检</h3>
+        <p class="step-point">弱势文化是一个"靠"字：靠别人、靠运气、靠"应该如此"。强势文化是按事情本来的规律动作。只对自己的念头用，不给别人贴标签。</p>
+        <blockquote class="ask"><span class="label">问自己</span><p>这个念头里，有多少在"靠"，有多少在"动"？</p></blockquote>
+      </div>
+    </li>
+    <li>
+      <div class="num">三<small>鉴路</small></div>
+      <div>
+        <h3 class="step-name">见路不走</h3>
+        <p class="step-point">别人走通的路，是他在他的特定条件下走通的。学规律，不学表相；照抄成功模板之前，先做条件差异审计。</p>
+        <blockquote class="ask"><span class="label">问自己</span><p>他成功时的关键条件，我缺哪几条？缺的是不是决定性的？</p></blockquote>
+      </div>
+    </li>
+    <li>
+      <div class="num">四<small>认道</small></div>
+      <div>
+        <h3 class="step-name">认客观规律</h3>
+        <p class="step-point">神即道，道法自然。市场、人性、时间、概率——这些不因你的愿望而改变。区分可改变的变量与只能顺应的规律，把力气全押在前者。</p>
+        <blockquote class="ask"><span class="label">问自己</span><p>这件事里，哪些是我改不了、只能顺应的？我还在跟哪条规律较劲？</p></blockquote>
+      </div>
+    </li>
+    <li>
+      <div class="num">五<small>因果</small></div>
+      <div>
+        <h3 class="step-name">不昧因果</h3>
+        <p class="step-point">种什么因，得什么果，中间不打折、不能赊账。想要果却不想种因，就是"破格获取"，早晚要还。</p>
+        <blockquote class="ask"><span class="label">问自己</span><p>我要的果，对应的因是什么？那个因，我愿不愿意、能不能种？</p></blockquote>
+      </div>
+    </li>
+    <li>
+      <div class="num">六<small>自度</small></div>
+      <div>
+        <h3 class="step-name">自性自度</h3>
+        <p class="step-point">得救之道，救主并不存在。贵人、平台、风口、"等我准备好"——都是等救主。承认没有人会来，才可能开始自己动。</p>
+        <blockquote class="ask"><span class="label">问自己</span><p>我在等谁来救？不等了——此刻我能自己动的第一步是什么？</p></blockquote>
+      </div>
+    </li>
+    <li>
+      <div class="num">七<small>放下</small></div>
+      <div>
+        <h3 class="step-name">无所住而生其心</h3>
+        <p class="step-point">做事时全力，做完不执着于结果与得失。把能控制的行动和控制不了的结果分开——尽人事，然后让下一个动作依然清醒。</p>
+        <blockquote class="ask"><span class="label">问自己</span><p>哪些是我能控制的动作？哪些是控制不了的结果？我的焦虑押在了哪边？</p></blockquote>
+      </div>
+    </li>
+  </ol>
+
+  <section class="redlines">
+    <h2>使用红线</h2>
+    <ul>
+      <li>只用它自检心态，不拿"弱势文化"贬低任何人或群体。</li>
+      <li>分析可以冷，对人要留温度——"我只是说事实"不是刻薄的许可证。</li>
+      <li>"无所住"是尽人事之后的放下，不是不尽人事的借口。</li>
+      <li>懂人性用来设计双赢和保护自己，不用来拿捏别人。</li>
+      <li>学他的方法，别学他的孤傲；用它的清醒，补它的温度。</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="summary">看透一件事，剥到文化属性；判断心态，看是"靠"还是"动"；学别人，见路不走；动作上，认规律、为因果负责；根子上——<em>没有救世主，尽人事而不执于果。</em></p>
+    <p class="colophon">蒸馏自《遥远的救世主》（豆豆 著）· 电视剧《天道》 · 仅为思考框架，不构成任何建议</p>
+  </footer>
+</div>
+
+</body>
+</html>

@@ -27,6 +27,8 @@ skills/dingyuanying/
     ├── core-concepts.md              # 核心概念详解（含原著语境）
     ├── apply-to-modern-life.md       # 职业/创业/投资/人际/内耗 五类场景
     └── pitfalls-and-limits.md        # 盲区、代价与使用红线（建议先读）
+docs/
+└── decision-card.html                # 七步决策卡（浏览器直接打开即可对照使用）
 ```
 
 ## 怎么用
@@ -34,6 +36,8 @@ skills/dingyuanying/
 **在 Claude Code 里**，把 `skills/dingyuanying/` 放到你的 skills 目录（如 `~/.claude/skills/` 或项目的 `.claude/skills/`），Claude 会在合适的场景自动触发；你也可以直接说"用丁元英的思路帮我看看这件事"。
 
 **当成思维清单**：不装 Claude Code 也行，`SKILL.md` 的七步流程和 `apply-to-modern-life.md` 的场景走法，本身就是一份可以对照使用的决策清单。
+
+**七步决策卡**：用浏览器打开 `docs/decision-card.html`，是一页可随手对照的决策卡——七道关、每关一句"问自己"、附使用红线，自动适配深浅色主题。
 
 ## 一句话
 
