@@ -1,0 +1,8 @@
+# Codex 可选元数据（Claude Code 会忽略此文件）
+interface:
+  display_name: "肖亚文方法"
+  short_description: "用《天道》肖亚文的五步法经营职业与机会：识货、长线、本分、冷判、敢接"
+  default_prompt: "用肖亚文的方式帮我评估这个机会："
+
+policy:
+  allow_implicit_invocation: true
