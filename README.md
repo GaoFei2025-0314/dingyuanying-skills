@@ -42,7 +42,7 @@ skills/
         ├── playbook.md               # 向上关系/跳槽/入伙/被裁重启 四场景打法
         └── pitfalls-and-limits.md    # 功利化人脉、盲目all-in、幸存者偏差
 .agents/skills/                       # → 符号链接，供 Codex 在本仓库内自动发现
-docs/decision-card.html               # 丁元英七步决策卡（浏览器直接打开）
+docs/decision-card.html               # 三人思维卡（浏览器直接打开，一页对照三套框架）
 install.sh                            # 一键安装（Claude / Codex / 两者）
 ```
 
@@ -66,7 +66,7 @@ cd dingyuanying-skills
 - 只是克隆了本仓库并在仓库目录里启动 Codex 的话，无需安装——Codex 会通过 `.agents/skills/` 自动发现。
 - 新装的 Skill 如未立即出现，重启一次 Codex 即可。
 
-**当成思维清单**：不装任何工具也行——各 `SKILL.md` 本身就是可对照使用的决策/自省清单，`docs/decision-card.html` 是可打印的七步决策卡。
+**当成思维清单**：不装任何工具也行——各 `SKILL.md` 本身就是可对照使用的决策/自省清单，`docs/decision-card.html` 是一页三卡的「三人思维卡」：丁元英七步拆解、芮小丹自在五问、肖亚文五步法，每条配一句"问自己"，按处境选卡对照。
 
 ## 一句话
 
