@@ -1,0 +1,726 @@
+<title>无处等待救世主</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@300;400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ── Token system ── */
+:root {
+  --ground:        #F4EFE8;
+  --ground-raised: #EAE4DC;
+  --ink:           #1C170E;
+  --ink-mid:       #665D52;
+  --ink-faint:     #A89F93;
+  --rule:          #D4CCC3;
+
+  --ding:  #8A3928;
+  --rui:   #3A697C;
+  --xiao:  #795B26;
+
+  --f-display: 'ZCOOL XiaoWei', 'Songti SC', STSong, serif;
+  --f-body:    'Noto Serif SC', 'Songti SC', STSong, Georgia, serif;
+  --f-ui:      'DM Sans', system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:        #10131A;
+    --ground-raised: #181C25;
+    --ink:           #E2DAD0;
+    --ink-mid:       #9A9085;
+    --ink-faint:     #4B4742;
+    --rule:          #262B35;
+    --ding:  #C25A47;
+    --rui:   #6CA4BA;
+    --xiao:  #BD974A;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ground:        #10131A;
+  --ground-raised: #181C25;
+  --ink:           #E2DAD0;
+  --ink-mid:       #9A9085;
+  --ink-faint:     #4B4742;
+  --rule:          #262B35;
+  --ding:  #C25A47;
+  --rui:   #6CA4BA;
+  --xiao:  #BD974A;
+}
+
+:root[data-theme="light"] {
+  --ground:        #F4EFE8;
+  --ground-raised: #EAE4DC;
+  --ink:           #1C170E;
+  --ink-mid:       #665D52;
+  --ink-faint:     #A89F93;
+  --rule:          #D4CCC3;
+  --ding:  #8A3928;
+  --rui:   #3A697C;
+  --xiao:  #795B26;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 17px; }
+
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--f-body);
+  line-height: 1.88;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ── */
+.container {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── Header ── */
+header {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 5rem 2rem 0;
+}
+
+.eyebrow {
+  font-family: var(--f-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 1.75rem;
+}
+
+h1 {
+  font-family: var(--f-display);
+  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1.18;
+  color: var(--ink);
+  text-wrap: balance;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.subhead {
+  font-size: 1rem;
+  color: var(--ink-mid);
+  line-height: 1.72;
+  max-width: 500px;
+  margin-bottom: 2.75rem;
+}
+
+/* Three seals */
+.triptych {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3.25rem;
+  flex-wrap: wrap;
+}
+
+.triptych-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.tseal {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-display);
+  font-size: 0.95rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.tlabel {
+  font-family: var(--f-ui);
+  font-size: 0.72rem;
+  color: var(--ink-mid);
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+}
+
+.tlabel strong {
+  display: block;
+  font-weight: 500;
+  color: var(--ink);
+  font-size: 0.78rem;
+}
+
+.header-rule {
+  height: 1px;
+  background: var(--rule);
+}
+
+/* ── Main ── */
+main {
+  padding: 3.5rem 0 5.5rem;
+}
+
+/* ── Intro ── */
+.intro { margin-bottom: 3rem; }
+
+.lead {
+  font-size: 1.05rem;
+  line-height: 1.95;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+
+p { font-size: 1rem; line-height: 1.88; color: var(--ink); margin-bottom: 1.2rem; }
+p:last-child { margin-bottom: 0; }
+
+strong { font-weight: 500; }
+
+/* ── Character sections ── */
+.char-section {
+  margin: 3.75rem 0;
+}
+
+.char-section[data-char="ding"] { --accent: var(--ding); }
+.char-section[data-char="rui"]  { --accent: var(--rui); }
+.char-section[data-char="xiao"] { --accent: var(--xiao); }
+
+.char-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.char-seal {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-display);
+  font-size: 1.3rem;
+  color: #fff;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.char-meta {}
+
+.char-chapter {
+  font-family: var(--f-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+
+h2 {
+  font-family: var(--f-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+/* Steps */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin: 1.5rem 0 1.75rem;
+  padding-left: 0.1rem;
+}
+
+.step {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.step-n {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-ui);
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+  margin-top: 0.36em;
+  font-variant-numeric: tabular-nums;
+}
+
+.step-body {
+  font-size: 0.97rem;
+  line-height: 1.82;
+  color: var(--ink);
+}
+
+.step-key {
+  font-weight: 500;
+  color: var(--accent);
+  margin-right: 0.2em;
+}
+
+/* Pull quote */
+.pullquote {
+  border-left: 2px solid var(--accent);
+  padding: 0.65rem 1.2rem;
+  margin: 2rem 0;
+  background: var(--ground-raised);
+  border-radius: 0 4px 4px 0;
+}
+
+.pullquote p {
+  font-family: var(--f-display);
+  font-size: 1.03rem;
+  line-height: 1.75;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Section divider */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0 0;
+  pointer-events: none;
+  user-select: none;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+.divider-char {
+  font-family: var(--f-display);
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+}
+
+/* ── Mirror section ── */
+.mirror-section {
+  margin: 3.75rem 0;
+  background: var(--ground-raised);
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+.mirror-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.mirror-title {
+  font-family: var(--f-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.mirror-sub {
+  font-family: var(--f-ui);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+
+.mirror-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+
+.mirror-card {
+  background: var(--ground);
+  border-radius: 7px;
+  padding: 1rem 1.05rem;
+}
+
+.mirror-name {
+  font-family: var(--f-display);
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin-bottom: 0.55rem;
+}
+
+.mirror-lesson {
+  font-size: 0.81rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+}
+
+/* ── Closing ── */
+.closing {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--rule);
+}
+
+.closing h2 {
+  margin-bottom: 1.5rem;
+}
+
+.usage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--rule);
+  border-radius: 7px;
+  overflow: hidden;
+  margin: 1.75rem 0 2rem;
+}
+
+.usage-cell {
+  background: var(--ground);
+  padding: 1.1rem 1rem;
+  text-align: center;
+}
+
+.usage-cell + .usage-cell {
+  border-left: 1px solid var(--rule);
+}
+
+.usage-who {
+  font-family: var(--f-display);
+  font-size: 1rem;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.usage-when {
+  font-size: 0.79rem;
+  color: var(--ink-mid);
+  line-height: 1.55;
+}
+
+.usage-note {
+  display: block;
+  margin-top: 0.2rem;
+  font-style: italic;
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+}
+
+/* Final quote */
+.final {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: var(--ground-raised);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.final-text {
+  font-family: var(--f-display);
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--ink);
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.final-em {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: var(--f-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+}
+
+/* ── Footer ── */
+footer {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 1.75rem 2rem 3rem;
+  border-top: 1px solid var(--rule);
+}
+
+.footer-note {
+  font-family: var(--f-ui);
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+  line-height: 1.65;
+}
+
+/* ── Responsive ── */
+@media (max-width: 560px) {
+  header { padding: 3.5rem 1.5rem 0; }
+  .container { padding: 0 1.5rem; }
+  main { padding: 2.5rem 0 4rem; }
+  footer { padding: 1.5rem 1.5rem 2.5rem; }
+  h2 { font-size: 1.3rem; }
+  .mirror-grid { grid-template-columns: 1fr; }
+  .usage-grid { grid-template-columns: 1fr; }
+  .usage-cell + .usage-cell { border-left: none; border-top: 1px solid var(--rule); }
+  .triptych { gap: 1.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+
+<!-- ── HEADER ── -->
+<header>
+  <p class="eyebrow">《遥远的救世主》· 豆豆</p>
+  <h1>无处等待救世主</h1>
+  <p class="subhead">丁元英教你看透，芮小丹教你活明白，肖亚文教你准备好了再接。三套方法，三种主场，接力使用才是完整的。</p>
+
+  <div class="triptych">
+    <div class="triptych-item">
+      <div class="tseal" style="background: var(--ding);">丁</div>
+      <div class="tlabel"><strong>丁元英 · 七步拆解</strong>看透事物本质</div>
+    </div>
+    <div class="triptych-item">
+      <div class="tseal" style="background: var(--rui);">芮</div>
+      <div class="tlabel"><strong>芮小丹 · 自在五问</strong>安顿内心</div>
+    </div>
+    <div class="triptych-item">
+      <div class="tseal" style="background: var(--xiao);">肖</div>
+      <div class="tlabel"><strong>肖亚文 · 五步法</strong>接住机会</div>
+    </div>
+  </div>
+
+  <div class="header-rule"></div>
+</header>
+
+<!-- ── MAIN ── -->
+<main>
+<div class="container">
+
+<!-- Intro -->
+<div class="intro">
+  <p class="lead">豆豆在《遥远的救世主》里设计了一个谜局：一个看透世界运行规律的人，一个天生活得明白的人，一个用方法走通普通人之路的人——三个人，共同把一件几乎不可能的事做成了，然后以各自的方式离场。</p>
+  <p>很多人看完《天道》，把丁元英当成"神"来崇拜，摘录他的台词当作解决一切问题的咒语。但这恰恰是豆豆最不愿意看到的事。书里没有救世主，有的只是三种可以学习、可以使用的方法。</p>
+  <p>事情复杂、看不清本质——用丁元英的七步。内心拧巴、陷入内耗——问芮小丹的五个问题。机会当前、需要判断和下注——走肖亚文的五步法。真实的问题很少只属于一张牌，很多时候需要三人接力。</p>
+</div>
+
+<!-- ── 丁元英 ── -->
+<div class="char-section" data-char="ding">
+  <div class="char-header">
+    <div class="char-seal">丁</div>
+    <div class="char-meta">
+      <p class="char-chapter">一 &nbsp;·&nbsp; 丁元英 &nbsp;·&nbsp; 七步拆解</p>
+      <h2>看透事物的本质</h2>
+    </div>
+  </div>
+
+  <p>丁元英最危险的地方不是他的答案，而是他的方法。</p>
+  <p>他给格律诗设计了一场看似"损人利己"的商战，最终让王庙村的农民站上了国际舞台——这个过程被很多人分析成"降维打击"或"神操作"。但如果你只记住了那个操作，你学走的是表皮；真正值钱的，是他在做任何决定之前走过的七个步骤。</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-body"><span class="step-key">剥文化属性</span>——任何问题，先问背后是什么文化逻辑在驱动。强势文化靠自己创造条件，弱势文化靠等待外力解救。认清自己现在用的是哪种逻辑，是一切分析的起点。</div>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-body"><span class="step-key">强弱势自检</span>——"靠"还是"动"？等待政策、贵人、运气落下来，还是主动构建成功的条件？这个问题不好回答，因为我们往往在用弱势文化的逻辑生活，却用强势文化的语言自我描述。</div>
+    </div>
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-body"><span class="step-key">见路不走</span>——别人走通的路，换一个人、换一个时机，就可能是陷阱。模仿成功者之前，先核查你有几条他们成功时具备的"因"。有几条，才有几成的参考价值。</div>
+    </div>
+    <div class="step">
+      <div class="step-n">4</div>
+      <div class="step-body"><span class="step-key">认客观规律</span>——市场、行业周期、人性都有不以人意志为转移的规律。丁元英从不试图改变他改变不了的结构性条件，而是在现有结构里找可行路径，顺道而为。</div>
+    </div>
+    <div class="step">
+      <div class="step-n">5</div>
+      <div class="step-body"><span class="step-key">不昧因果</span>——想要某个结果，就老实种那个结果对应的因。很多人想要"成功"，种的是"看起来在努力"的因。差在哪里，结果就缺在哪里。</div>
+    </div>
+    <div class="step">
+      <div class="step-n">6</div>
+      <div class="step-body"><span class="step-key">自性自度</span>——没有救世主。想明白了，自己救自己；没想明白，外力扶起来也会倒。丁元英帮王庙村，不是给鱼，是设计了一个让他们学会打猎的局——但叶晓明最终还是败给了自己的格局。</div>
+    </div>
+    <div class="step">
+      <div class="step-n">7</div>
+      <div class="step-body"><span class="step-key">无所住</span>——做完了，放下。不执着于已得的成果，不把过往的胜利当下一局的护身符。很多人以为自己做到了，其实只是麻木，不是放下。</div>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <p>丁元英方法论的最大陷阱，是把它当成"聪明人的特权"。实际上这七步是普通人也能走的分析流程——只是它要求你诚实，而诚实是最难的一步。</p>
+  </div>
+
+  <p>这套方法的盲区也要诚实说明：它极度理性，代价是冷。用在人际关系和情感场合时需要克制，否则很容易把"分析"变成"切割"。丁元英自己在感情上的处境，已经是最好的提醒。</p>
+
+  <div class="divider"><span class="divider-char">·</span></div>
+</div>
+
+<!-- ── 芮小丹 ── -->
+<div class="char-section" data-char="rui">
+  <div class="char-header">
+    <div class="char-seal">芮</div>
+    <div class="char-meta">
+      <p class="char-chapter">二 &nbsp;·&nbsp; 芮小丹 &nbsp;·&nbsp; 自在五问</p>
+      <h2>活明白不是想出来的</h2>
+    </div>
+  </div>
+
+  <p>丁元英是"想明白了再活明白"，芮小丹是"天生活得明白"。</p>
+  <p>这个区别很重要。丁元英的方法是分析工具；芮小丹的方式是存在状态。她没有七步，只有五个问题——不是解题步骤，而是一种持续的内部校准。当你在内耗、焦虑、关系里患得患失的时候，这五个问题比任何分析都管用。</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">问1</div>
+      <div class="step-body"><span class="step-key">去掉观众</span>——你现在的选择里，有多少是说给别人看的？芮小丹在全剧里从不表演，包括对丁元英。喜欢，就直说；决定已定，不拖累任何人，一个人关门。去掉观众，不是不在乎别人，是不把"别人怎么看我"当决策方程的变量。</div>
+    </div>
+    <div class="step">
+      <div class="step-n">问2</div>
+      <div class="step-body"><span class="step-key">卸掉"应该"</span>——"我应该稳定"、"我应该感恩"、"我应该比现在更努力"——这些"应该"是谁定的？是你认同后写进行为准则的，还是外部施压后内化的？卸掉不属于自己的"应该"，不是为了散漫，而是为了清醒。</div>
+    </div>
+    <div class="step">
+      <div class="step-n">问3</div>
+      <div class="step-body"><span class="step-key">回到当下</span>——焦虑是把注意力放在还没发生的未来，后悔是把注意力锁在已经过去的事上。芮小丹的存在方式是彻底在场——警察时是彻底的警察，恋人时是彻底的恋人，不把任何一刻当作通往另一刻的跳板。</div>
+    </div>
+    <div class="step">
+      <div class="step-n">问4</div>
+      <div class="step-body"><span class="step-key">爱而不占有</span>——她对丁元英的爱，从来不要求对方改变。欣赏他的冷，不试图把他变暖；离开时把他最好的未来托付给了肖亚文而不是自己。大多数人的"爱"里藏着"按我期望的样子存在"这个要求，这才是关系拧巴的根源。</div>
+    </div>
+    <div class="step">
+      <div class="step-n">问5</div>
+      <div class="step-body"><span class="step-key">拆掉抵押</span>——不把自我价值抵押给任何外物：某段关系、某个职位、某个头衔、他人的认可。根在自己这里，外部的得失就只是天气，会变，但不会动摇根基。</div>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <p>芮小丹是全剧唯一真正活在当下的人，也是唯一一个结局让人难过却不让人惋惜的人——她的离开是她自己的选择，符合她整个的活法，没有任何外力强迫。在这个意义上，她比任何人都自由。</p>
+  </div>
+
+  <p>使用边界同样需要说明：芮小丹的方法不适合需要战略性分析的场合，也不适合面对真实危机时的应对（那是丁元英的主场）。如果身处高风险处境或严重心理困境，这五问是辅助，不是替代专业帮助的工具。</p>
+
+  <div class="divider"><span class="divider-char">·</span></div>
+</div>
+
+<!-- ── 肖亚文 ── -->
+<div class="char-section" data-char="xiao">
+  <div class="char-header">
+    <div class="char-seal">肖</div>
+    <div class="char-meta">
+      <p class="char-chapter">三 &nbsp;·&nbsp; 肖亚文 &nbsp;·&nbsp; 五步法</p>
+      <h2>没有天赋的人怎么走通</h2>
+    </div>
+  </div>
+
+  <p>很多人看《天道》，记住了丁元英，忽略了肖亚文。但在三个人里，肖亚文的方法是最可复制的。</p>
+  <p>她没有丁元英的才华，也没有芮小丹的天然通透——她就是一个普通人，靠五步走通了普通人的路。她是全剧唯一纯靠方法走到终点的"普通人"，每一步都可以被观察、被学习、被执行。</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-body"><span class="step-key">识货</span>——在众人还没看清之前，认出真正的价值。肖亚文很早认出了丁元英，不是因为他有名，而是她独立判断出他不寻常。识货的前提是养成独立判断的习惯，不跟风，不随大流。</div>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-body"><span class="step-key">长线</span>——她为丁元英整理资料、处理杂务，长达数年，从不要求立竿见影的回报。这不是委曲求全，而是长线投资——用时间换信任，用积累换资格。机会来临时，没有长线布局的人根本没有资格接。</div>
+    </div>
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-body"><span class="step-key">本分</span>——在每个当下的位置，把分内事做到最好，不走捷径，不越界。很多人以为这是"傻"，其实是最聪明的——因为它在一点一点积累"可靠"这个稀缺的品牌。</div>
+    </div>
+    <div class="step">
+      <div class="step-n">4</div>
+      <div class="step-body"><span class="step-key">冷判</span>——机会来了，不被情绪带走。三格评估：最好情况、最坏情况、最坏情况兜得住吗？评估完再决定押多大的注。肖亚文在决定接手格律诗之前，显然在内心跑过这个流程。</div>
+    </div>
+    <div class="step">
+      <div class="step-n">5</div>
+      <div class="step-body"><span class="step-key">敢接</span>——评估过了、能兜住，就接。机会的时效性是真实的——犹豫本身是成本，拖延会让窗口关闭。肖亚文是全剧里敢接、也接得住的唯一普通人。</div>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <p>这五步之所以可复制，是因为它们不依赖天赋，只依赖时间和自律。代价是：它是长线的，初期看起来什么惊天动地的事都没在做，只是把手边的事情做好。</p>
+  </div>
+
+  <p>使用误区同样要说清楚：这套方法容易被错误使用为"功利化人脉"——把所有关系都当成交换筹码，这是对肖亚文的误读。她从来不是在"利用"丁元英，而是真正认可他的价值，并选择长期与之同行。方法的前提，是识货的眼光，不是算计的心机。</p>
+
+  <div class="divider"><span class="divider-char">·</span></div>
+</div>
+
+<!-- ── 反面镜子 ── -->
+<div class="mirror-section">
+  <div class="mirror-header">
+    <span class="mirror-title">三面镜子</span>
+    <span class="mirror-sub">对照学</span>
+  </div>
+
+  <p style="font-size:0.9rem; color:var(--ink-mid); margin-bottom:1.25rem;">叶晓明、刘冰、林雨峰，是书里最好的反向教材。不是因为他们坏，而是因为他们真实——他们的失败，我们在自己身上都能找到影子。</p>
+
+  <div class="mirror-grid">
+    <div class="mirror-card">
+      <p class="mirror-name">叶晓明</p>
+      <p class="mirror-lesson">格局决定能不能接住机会。关键时刻选择撤退——因为他的格局只装得下确定性，装不下风险。他不是坏人，是聪明但格局有限的普通人。<strong>很多人都是叶晓明。</strong></p>
+    </div>
+    <div class="mirror-card">
+      <p class="mirror-name">刘冰</p>
+      <p class="mirror-lesson">德不配位，必有灾殃。拿到了一张超出自己认知的王牌，却不知道怎么打，最终被那张牌反噬。手里的筹码必须匹配得上承载它的心智。</p>
+    </div>
+    <div class="mirror-card">
+      <p class="mirror-name">林雨峰</p>
+      <p class="mirror-lesson">执念会锁死强者。他是真正有能力的人，但他输不起——把全部自我价值押在"不能输"上，一旦输了，就无路可退。放不下执念，是给自己挖的坑。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── 结语 ── -->
+<div class="closing">
+  <h2 style="font-family: var(--f-display); font-weight:400;">三张牌，怎么接力</h2>
+
+  <p>这三套方法不是互相替代的，是互相补充的。真实的问题很少只属于一张牌。</p>
+
+  <div class="usage-grid">
+    <div class="usage-cell">
+      <div class="usage-who" style="color: var(--ding);">丁元英</div>
+      <div class="usage-when">事情复杂、看不清本质<span class="usage-note">算不明白是什么，用七步拆</span></div>
+    </div>
+    <div class="usage-cell">
+      <div class="usage-who" style="color: var(--rui);">芮小丹</div>
+      <div class="usage-when">内心拧巴、陷入内耗<span class="usage-note">过不去的心事，问五个问题</span></div>
+    </div>
+    <div class="usage-cell">
+      <div class="usage-who" style="color: var(--xiao);">肖亚文</div>
+      <div class="usage-when">机会当前、需要判断<span class="usage-note">算清账、敢接，走五步法</span></div>
+    </div>
+  </div>
+
+  <p>实际走法通常是接力：算清楚账（肖亚文），发现下不了手（切芮小丹）；自我剖析完（芮小丹），发现需要判断方向（切丁元英）。知道卡在哪一步，就切到管那步的人。</p>
+
+  <p>豆豆写这本书，大概不是为了给人提供答案，而是为了提供一种清醒的方式去面对没有答案的生活。三个人，三种路，但有一件事是共同的：</p>
+
+  <div class="final">
+    <p class="final-text">学丁元英的"看透"，学芮小丹的"自在"，学肖亚文的"准备与下注"——没有救世主，尽人事而不执于果；根在自己这儿，外面的得失就只是天气。</p>
+    <span class="final-em">根在自己这里。</span>
+  </div>
+</div>
+
+</div><!-- .container -->
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p class="footer-note">本文为对文艺作品人物思维的提炼与再创作，用于学习和思考，不构成任何投资、法律、心理或人生建议。原著《遥远的救世主》豆豆著；电视剧《天道》改编自原著。</p>
+</footer>
